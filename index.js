@@ -1,24 +1,12 @@
 import express from "express";
 import data from "./data.json" assert { type: "json" };
+import { getRandomUnusedItem } from "./helpers/helpers.js";
+
 import { config } from "dotenv";
 config();
 const PORT = process.env.PORT || 3000;
 
 const app = express();
-
-//helper per tenir un index random d'un array.
-const getRandomIndex = (array) => {
-  return Math.floor(Math.random() * array.length);
-};
-
-//helper que ajuda a comprovar si s'ha fet servir una part de la frase
-const getRandomUnusedItem = (set, data) => {
-  let item;
-  do {
-    item = data[getRandomIndex(data)];
-  } while (set.has(item));
-  return item;
-};
 
 // si no es posa maxlen crida l'altra ruta amb un numero equivalent a infinit
 app.get("/:num", (req, res) => {
