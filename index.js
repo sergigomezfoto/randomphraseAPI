@@ -1,9 +1,9 @@
-import express from "express";
-import data from "./data.json" assert { type: "json" };
-import { getRandomUnusedItem } from "./helpers/helpers.js";
+const express = require("express");
+const data = require("./data.json");
+const { getRandomUnusedItem } = require("./helpers/helpers.js");
 
-import { config } from "dotenv";
-config();
+require('dotenv').config();
+
 const PORT = process.env.PORT || 3000;
 
 const app = express();
